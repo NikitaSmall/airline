@@ -4,6 +4,8 @@ var path = require('path');
 var mime = require('mime');
 var jade = require('jade');
 
+var chatServer = require('./lib/chat_server');
+
 var cache = {};
 
 function send404(res) {
@@ -76,3 +78,6 @@ var server = http.createServer(function(req, res) {
 server.listen(3000, 'localhost', function() {
   console.log('server listen on localhost:3000');
 });
+
+// implementation of socket.io chat server
+chatServer.listen(server);
