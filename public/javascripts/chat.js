@@ -16,16 +16,16 @@ Chat.prototype.changeRoom = function(room) {
 
 Chat.prototype.processCommand = function(command) {
   var words = command.split(command);
-  var command = words[0].substring(1, words[0].length).toLowerCase();
+  var command = words[0];
   var message = false;
 
-  switch (command) {
-    case 'join':
+  switch (words[0]) {
+    case '/комната':
       words.shift();
       var room = words.join(' ');
       this.changeRoom(room);
       break;
-    case 'nick':
+    case '/nick':
       words.shift();
       var name = words.join(' ');
       this.socket.emit('nameAttempt', name);
